@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>業種別テンプレート一覧 | NULL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tmpl-hero{padding:120px 48px 60px;text-align:center;background:var(--dark-surface)}
+    .tmpl-hero h1{font-size:32px;font-weight:700;margin-bottom:12px;color:var(--white)}
+    .tmpl-hero p{font-size:14px;color:var(--text-secondary)}
+    .tmpl-section{max-width:1200px;margin:0 auto;padding:80px 48px}
+    .tmpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .tmpl-card{background:var(--dark-card);border:1px solid var(--dark-border);overflow:hidden;transition:all 0.4s}
+    .tmpl-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+    .tmpl-preview{height:400px;overflow:hidden;position:relative}
+    .tmpl-preview iframe{width:100%;height:100%;border:none;pointer-events:none}
+    .tmpl-preview-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,var(--dark-card) 100%);cursor:pointer}
+    .tmpl-meta{padding:24px}
+    .tmpl-meta h3{font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px}
+    .tmpl-meta p{font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
+    .tmpl-tag{display:inline-block;font-size:10px;padding:3px 10px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--neon-blue);letter-spacing:1px;margin-right:6px}
+    .tmpl-open{display:inline-block;margin-top:16px;color:var(--neon-blue);font-size:13px;font-weight:700;letter-spacing:1px;transition:opacity 0.3s}
+    .tmpl-open:hover{opacity:0.7}
+    @media(max-width:1024px){.tmpl-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.tmpl-grid{grid-template-columns:1fr}.tmpl-section{padding:60px 24px}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">NULL</a>
+  <ul class="nav-links"></ul>
+  <a href="index.html" class="nav-cta">トップへ戻る</a>
+</nav>
+
+<div class="tmpl-hero">
+  <div class="section-label" style="justify-content:center;margin-bottom:16px">TEMPLATES</div>
+  <h1>業種別テンプレート一覧</h1>
+  <p>各業種に最適化されたサイトのイメージをご覧ください。全てカスタマイズ可能です。</p>
+</div>
+
+<div class="tmpl-section">
+  <div class="tmpl-grid" id="template-grid"></div>
+</div>
+
+<footer>
+  <div style="text-align:center">
+    <div class="footer-copy">© 2025 NULL. ALL RIGHTS RESERVED.</div>
+  </div>
+</footer>
+
+<script>
+const templates = [
+  {name:"Nail Studio VIVI",type:"ネイルサロン",tags:["ミニゲーム","予約"],desc:"ガチャでクーポン配布、フラッシュネイルのギャラリー、24h予約対応。",img:"assets/tmpl_nail.jpg",url:"demo-nail.html"},
+  {name:"焼肉 炎 -HOMURA-",type:"焼肉店",tags:["スタンプラリー","予約"],desc:"スタンプラリーで常連育成、コース予約、テイクアウト対応。",img:"assets/tmpl_yakiniku.jpg",url:"demo-yakiniku.html"},
+  {name:"Café Drip",type:"カフェ",tags:["ログインボーナス","EC"],desc:"ログインボーナスで日替わりクーポン、オンラインショップ連動。",img:"assets/tmpl_cafe.jpg",url:"demo-cafe.html"},
+  {name:"BARBER GENT",type:"理容室",tags:["予約","ポイント"],desc:"メンズに特化したUI、リアルタイム空き状況表示、ポイント制度。",img:"assets/tmpl_barber.jpg",url:"demo-barber.html"},
+  {name:"整体院 和 -NAGOMI-",type:"整体院",tags:["予約自動化","リマインド"],desc:"症状別メニュー、自動リマインド、施術後フォロー。",img:"assets/tmpl_seitai.jpg",url:"demo-seitai.html"},
+  {name:"FIT ZONE",type:"フィットネスジム",tags:["ランキング","会員管理"],desc:"会員ランキングでモチベUP、トレーニング記録、退会率最小化。",img:"assets/tmpl_gym.jpg",url:"demo-gym.html"},
+];
+const grid = document.getElementById('template-grid');
+templates.forEach(t => {
+  grid.innerHTML += `
+    <div class="tmpl-card">
+      <div class="tmpl-preview" style="padding:0;overflow:hidden;">
+        <img src="${t.img}" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.4s;">
+      </div>
+      <div class="tmpl-meta">
+        <h3>${t.name}</h3>
+        <p>${t.desc}</p>
+        ${t.tags.map(tag=>`<span class="tmpl-tag">${tag}</span>`).join('')}
+        <br><a href="${t.url}" class="tmpl-open">→ デモを見る</a>
+      </div>
+    </div>`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Nail Studio VIVI | NULLデモ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:#050505;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{padding:16px 24px;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid rgba(255,100,150,0.15)}
+.nav span{font-size:11px;color:#ff85b3;letter-spacing:2px;text-transform:uppercase}
+.nav a{font-size:12px;color:#888;transition:color 0.3s}.nav a:hover{color:#fff}
+
+/* HERO: フルスクリーン背景+縦書き風 */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('assets/tmpl_nail.jpg') center/cover;filter:brightness(0.35) saturate(0.8)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,0,5,0.7),rgba(30,0,15,0.3))}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:20px}
+.hero-inner p.kicker{color:#ffb3d9;font-size:11px;letter-spacing:8px;margin-bottom:24px;text-transform:uppercase}
+.hero-inner h1{font-size:72px;font-weight:200;color:#fff;margin-bottom:12px;letter-spacing:8px;font-family:serif}
+.hero-inner p.sub{color:#ccc;font-size:14px;letter-spacing:3px;margin-bottom:48px}
+.btn-reserve{background:#ff6ec7;color:#fff;border:none;padding:18px 64px;font-size:13px;font-weight:700;letter-spacing:3px;cursor:pointer;border-radius:40px;transition:all 0.4s}
+.btn-reserve:hover{background:#fff;color:#ff6ec7;box-shadow:0 10px 30px rgba(255,110,199,0.4);transform:translateY(-3px)}
+
+/* ABOUT */
+.about{padding:100px 24px;display:flex;gap:60px;max-width:1000px;margin:0 auto;align-items:center}
+.about-img{width:320px;flex-shrink:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,100,150,0.15)}
+.about-img img{width:100%;display:block}
+.about-text h2{font-size:11px;letter-spacing:6px;color:#ff85b3;margin-bottom:16px}
+.about-text h3{font-size:28px;font-weight:300;color:#fff;margin-bottom:20px;line-height:1.5}
+.about-text p{font-size:14px;color:#aaa;line-height:1.9}
+
+/* MENU */
+.menu-sec{padding:100px 24px;background:rgba(255,255,255,0.01);border-top:1px solid #111;border-bottom:1px solid #111}
+.menu-sec .inner{max-width:900px;margin:0 auto}
+.menu-sec h2{font-size:11px;letter-spacing:6px;color:#ff85b3;text-align:center;margin-bottom:48px}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.menu-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:36px;text-align:center;border-radius:12px;transition:all 0.3s}
+.menu-item:hover{background:rgba(255,110,199,0.04);border-color:rgba(255,110,199,0.2);transform:translateY(-4px)}
+.menu-item .name{font-size:16px;color:#ffb3d9;letter-spacing:1px;margin-bottom:8px;font-weight:500}
+.menu-item .desc{font-size:12px;color:#888;margin-bottom:16px;line-height:1.6}
+.menu-item .price{font-size:24px;font-weight:200;color:#fff}
+
+/* GALLERY */
+.gallery{padding:100px 24px;max-width:1000px;margin:0 auto}
+.gallery h2{font-size:11px;letter-spacing:6px;color:#ff85b3;text-align:center;margin-bottom:48px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.gallery-grid .thumb{aspect-ratio:1;background:#111;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:32px;transition:all 0.3s;cursor:pointer}
+.gallery-grid .thumb:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,110,199,0.2)}
+
+/* GACHA */
+.gacha{padding:80px 24px;max-width:600px;margin:0 auto}
+.gacha-box{background:linear-gradient(135deg,rgba(255,110,199,0.08),rgba(0,0,0,0));border:1px solid rgba(255,100,150,0.25);padding:64px 32px;text-align:center;border-radius:20px;position:relative;overflow:hidden}
+.gacha-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center,rgba(255,110,199,0.05) 0%,transparent 50%);animation:glow-rotate 10s linear infinite}
+@keyframes glow-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.gacha-box h3{font-size:24px;color:#fff;margin-bottom:12px;font-weight:300;letter-spacing:3px;position:relative}
+.gacha-box p{color:#aaa;font-size:14px;font-weight:300;margin-bottom:32px;position:relative}
+.gacha-btn{background:transparent;color:#ff6ec7;border:2px solid #ff6ec7;padding:18px 56px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:3px;border-radius:40px;transition:all 0.3s;position:relative}
+.gacha-btn:hover{background:#ff6ec7;color:#fff;box-shadow:0 0 30px rgba(255,110,199,0.4)}
+
+/* INSTA */
+.insta{padding:80px 24px;text-align:center;border-top:1px solid #111}
+.insta h2{font-size:11px;letter-spacing:6px;color:#ff85b3;margin-bottom:16px}
+.insta p{font-size:14px;color:#888;margin-bottom:32px}
+.insta-btn{display:inline-block;border:1px solid rgba(255,100,150,0.3);padding:14px 40px;font-size:12px;font-weight:700;color:#ffb3d9;letter-spacing:2px;border-radius:30px;transition:all 0.3s}
+.insta-btn:hover{background:rgba(255,100,150,0.1)}
+
+/* FOOTER */
+.foot{text-align:center;padding:48px 24px;font-size:10px;color:#333;border-top:1px solid #111;letter-spacing:1px}
+.foot .logo{font-size:20px;font-weight:200;color:#555;margin-bottom:12px;letter-spacing:6px}
+.foot .info{color:#444;font-size:11px;line-height:2;margin-bottom:16px}
+
+@media(max-width:768px){
+  .about{flex-direction:column}.about-img{width:100%}
+  .menu-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner h1{font-size:48px}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+</head><body>
+
+<!-- NAV -->
+<div class="nav">
+  <span>Nail Studio VIVI</span>
+  <a href="templates.html">← テンプレ一覧</a>
+</div>
+
+<!-- HERO: フルスクリーン -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <p class="kicker">Premium Nail Studio</p>
+    <h1>VIVI</h1>
+    <p class="sub">Flash Nail ・ Art ・ Mobile Deco</p>
+    <button class="btn-reserve" onclick="alert('予約機能のデモです')">RESERVE</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-img"><img src="assets/tmpl_nail.jpg" alt="サロン内装"></div>
+  <div class="about-text">
+    <h2>ABOUT US</h2>
+    <h3>あなたの "好き" を、<br>指先に。</h3>
+    <p>VIVIは、フラッシュネイル・痛ネイル・キャラクターネイルを専門とするネイルサロンです。<br><br>
+    「可愛い」も「かっこいい」も「推し」も、全部叶えます。一人ひとりに寄り添ったカウンセリングで、あなただけのデザインをご提案。<br><br>
+    モバイルデコレーションにも対応。スマホケースやタブレットも、あなただけの一点ものに仕上げます。</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-sec">
+  <div class="inner">
+    <h2>TREATMENT MENU</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="name">ワンカラー / グラデーション</div>
+        <div class="desc">豊富なカラーから選べるベーシックメニュー。<br>初めての方にもおすすめです。</div>
+        <div class="price">¥5,500</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">フラッシュネイル</div>
+        <div class="desc">光を反射するミラー＆オーロラパーツで<br>SNS映え抜群のキラキラ仕上げ。</div>
+        <div class="price">¥7,800</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">フルアート / キャラネイル</div>
+        <div class="desc">推しキャラ・アニメ・ゲームモチーフを<br>指先に完全再現する痛ネイル特化メニュー。</div>
+        <div class="price">¥9,500〜</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">モバイルデコレーション</div>
+        <div class="desc">スマホケース・タブレット・<br>イヤホンケースなどをオーダーメイドでデコ。</div>
+        <div class="price">¥4,800〜</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">リペア / オフのみ</div>
+        <div class="desc">他店ジェルの丁寧なオフ。<br>自爪を傷めないケアを徹底しています。</div>
+        <div class="price">¥3,300</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">ハンドケア / パラフィンパック</div>
+        <div class="desc">乾燥が気になる季節に。<br>保湿＆ツヤで指先から美しく。</div>
+        <div class="price">¥2,200</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <h2>DESIGN GALLERY</h2>
+  <div class="gallery-grid">
+    <div class="thumb" style="background:linear-gradient(135deg,#ff9cf0,#6a0dad)">💅</div>
+    <div class="thumb" style="background:linear-gradient(135deg,#ffd700,#ff69b4)">✨</div>
+    <div class="thumb" style="background:linear-gradient(135deg,#00d4ff,#ff6ec7)">🌸</div>
+    <div class="thumb" style="background:linear-gradient(135deg,#1a0a2e,#4a0080)">🎮</div>
+    <div class="thumb" style="background:linear-gradient(135deg,#ff4081,#880e4f)">🦋</div>
+    <div class="thumb" style="background:linear-gradient(135deg,#7c4dff,#00bcd4)">💎</div>
+  </div>
+  <p style="text-align:center;margin-top:24px;font-size:12px;color:#555">※ 実際のサロンではお客様の施術実績写真が並びます</p>
+</section>
+
+<!-- GACHA -->
+<section class="gacha">
+  <div class="gacha-box">
+    <h3>🎟️ DAILY GACHA</h3>
+    <p>毎日1回チャレンジ！<br>当たりで次回10%OFFクーポンが手に入る！</p>
+    <button class="gacha-btn" onclick="alert('🎉 おめでとうございます！\n次回使える10%OFFクーポンを獲得しました！')">ガチャを回す</button>
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA -->
+<section class="insta">
+  <h2>FOLLOW US</h2>
+  <p>最新デザインはInstagramで公開中。<br>DMからのご予約・お問い合わせも受付中です。</p>
+  <a href="#" class="insta-btn" onclick="alert('Instagramページへ遷移します')">@VIVI_nail → 見に行く</a>
+</section>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div class="logo">VIVI</div>
+  <div class="info">
+    営業時間: 10:00 - 20:00（不定休）<br>
+    〒820-0000 福岡県飯塚市 XX-XX<br>
+    ご予約: LINE / Instagram DM
+  </div>
+  <div>This is a NULL demo template. © NULL</div>
+</div>
+
+</body></html>

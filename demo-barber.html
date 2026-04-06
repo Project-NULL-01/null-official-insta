@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BARBER GENT | NULLデモ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:#0a0a0a;color:#e0e0e0}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{padding:14px 28px;background:#000;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid #1a1a1a}
+.nav span{font-size:10px;color:#00d4ff;letter-spacing:3px;font-weight:700}.nav a{font-size:11px;color:#555;transition:color 0.3s}.nav a:hover{color:#00d4ff}
+
+/* HERO: タイポグラフィック */
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),url('assets/tmpl_barber.jpg') center/cover;text-align:center;position:relative}
+.hero h1{font-size:100px;font-weight:900;color:#fff;letter-spacing:20px;margin-bottom:0;text-shadow:0 10px 40px rgba(0,0,0,0.8);line-height:1}
+.hero .line{width:100px;height:1px;background:#00d4ff;margin:32px auto}
+.hero .sub{font-size:12px;color:#888;letter-spacing:10px;margin-bottom:56px}
+.btn-book{background:transparent;color:#00d4ff;border:1px solid #00d4ff;padding:20px 72px;font-size:12px;font-weight:700;letter-spacing:6px;cursor:pointer;transition:all 0.3s}
+.btn-book:hover{background:#00d4ff;color:#000;box-shadow:0 0 30px rgba(0,212,255,0.3)}
+
+/* PHILOSOPHY */
+.philosophy{padding:120px 24px;text-align:center;max-width:650px;margin:0 auto;border-bottom:1px solid #111}
+.philosophy h2{font-size:10px;color:#00d4ff;letter-spacing:10px;margin-bottom:32px}
+.philosophy p{font-size:16px;color:#888;line-height:2.4;font-weight:300}
+
+/* SERVICES: 縦リスト（理容室特有のメニュー構成） */
+.service-sec{padding:100px 24px;max-width:800px;margin:0 auto}
+.service-sec h2{font-size:10px;color:#00d4ff;letter-spacing:10px;text-align:center;margin-bottom:56px}
+.service-grid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid #1a1a1a}
+.service-item{padding:36px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a1a;transition:all 0.3s}
+.service-item:last-child{border-bottom:none}
+.service-item:hover{background:rgba(0,212,255,0.03)}
+.service-item h3{font-size:18px;font-weight:600;color:#fff;letter-spacing:2px}
+.service-item p{font-size:12px;color:#555;margin-top:6px;line-height:1.6}
+.service-item .right{text-align:right}
+.service-item .price{font-size:24px;font-weight:700;color:#00d4ff}
+.service-item .time{font-size:11px;color:#444;margin-top:4px}
+
+/* AVAILABILITY: 空き状況 */
+.avail-sec{padding:100px 24px;background:#050505;border-top:1px solid #111}
+.avail-sec .inner{max-width:700px;margin:0 auto}
+.avail-sec h2{font-size:10px;color:#00d4ff;letter-spacing:10px;text-align:center;margin-bottom:16px}
+.avail-sec p{text-align:center;font-size:12px;color:#555;margin-bottom:40px}
+.time-row{display:flex;align-items:center;padding:16px 0;border-bottom:1px solid #111}
+.time-label{width:80px;font-size:14px;font-weight:700;color:#888}
+.time-bar{flex:1;height:40px;background:#111;border-radius:4px;position:relative;overflow:hidden;margin:0 16px}
+.time-bar .fill{height:100%;border-radius:4px;transition:all 0.3s}
+.time-bar .fill.open{background:rgba(0,212,255,0.2);cursor:pointer}
+.time-bar .fill.open:hover{background:rgba(0,212,255,0.4)}
+.time-bar .fill.closed{background:rgba(255,255,255,0.05)}
+.time-status{width:50px;font-size:11px;font-weight:700;text-align:right}
+.time-status.open{color:#00d4ff}
+.time-status.closed{color:#333}
+
+/* POINT */
+.point-sec{padding:100px 24px;max-width:600px;margin:0 auto;text-align:center}
+.point-sec h2{font-size:10px;color:#00d4ff;letter-spacing:10px;margin-bottom:16px}
+.point-sec p{font-size:14px;color:#888;margin-bottom:40px;line-height:1.8}
+.point-card{background:linear-gradient(135deg,#111,#0a0a0a);border:1px solid rgba(0,212,255,0.2);padding:40px;border-radius:12px;box-shadow:0 0 40px rgba(0,212,255,0.05)}
+.point-card .member{font-size:11px;color:#00d4ff;letter-spacing:4px;margin-bottom:16px}
+.point-card .pts{font-size:48px;font-weight:900;color:#fff;margin-bottom:8px}
+.point-card .rank{font-size:12px;color:#888;letter-spacing:2px}
+.point-card .next{font-size:12px;color:#555;margin-top:24px}
+.point-bar-bg{width:100%;height:8px;background:#222;border-radius:4px;margin:16px 0 0;overflow:hidden}
+.point-bar-fill{width:65%;height:100%;background:linear-gradient(90deg,#00d4ff,#0099cc);border-radius:4px}
+
+/* FOOTER */
+.foot{text-align:center;padding:60px 24px;font-size:10px;color:#333;background:#000;letter-spacing:2px}
+.foot .logo{font-size:32px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:12px}
+.foot .info{font-size:11px;color:#444;line-height:2;margin-bottom:16px}
+
+@media(max-width:640px){.hero h1{font-size:56px;letter-spacing:10px}.service-item{flex-direction:column;text-align:center}.service-item .right{margin-top:12px;text-align:center}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head><body>
+
+<div class="nav"><span>BARBER GENT</span><a href="templates.html">← テンプレ一覧</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>GENT</h1>
+  <div class="line"></div>
+  <div class="sub">MEN'S GROOMING STUDIO</div>
+  <button class="btn-book" onclick="alert('予約機能のデモです')">BOOK NOW</button>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <h2>PHILOSOPHY</h2>
+  <p>「男の身だしなみは、日常の品格。」<br><br>
+  GENTは、ただ髪を切る場所ではありません。<br>
+  カウンセリングから仕上げまで、<br>すべての工程に「本物のサービス」を。<br><br>
+  最高の技術と空間で、<br>あなたの「最善の自分」を引き出します。</p>
+</section>
+
+<!-- SERVICES -->
+<section class="service-sec">
+  <h2>SERVICES</h2>
+  <div class="service-grid">
+    <div class="service-item">
+      <div><h3>STYLE CUT</h3><p>カウンセリング・シャンプー・ブロー・スタイリング込</p></div>
+      <div class="right"><div class="price">¥5,500</div><div class="time">約60min</div></div>
+    </div>
+    <div class="service-item">
+      <div><h3>CUT & SHAVE</h3><p>カット＋ホットタオルシェービング＋フェイシャルスキンケア</p></div>
+      <div class="right"><div class="price">¥7,200</div><div class="time">約90min</div></div>
+    </div>
+    <div class="service-item">
+      <div><h3>HEAD SPA</h3><p>炭酸クレンジング × スカルプマッサージ × トリートメント</p></div>
+      <div class="right"><div class="price">¥4,400</div><div class="time">約45min</div></div>
+    </div>
+    <div class="service-item">
+      <div><h3>BEARD DESIGN</h3><p>ヒゲのデザインカット＋形状補正＋保湿ケア</p></div>
+      <div class="right"><div class="price">¥3,300</div><div class="time">約30min</div></div>
+    </div>
+    <div class="service-item">
+      <div><h3>FULL COURSE</h3><p>CUT + SHAVE + HEAD SPA + STYLING（フルコースセット割引）</p></div>
+      <div class="right"><div class="price">¥12,000</div><div class="time">約150min</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABILITY -->
+<section class="avail-sec">
+  <div class="inner">
+    <h2>TODAY'S AVAILABILITY</h2>
+    <p>本日の空き状況 — リアルタイム更新</p>
+    <div class="time-row"><div class="time-label">10:00</div><div class="time-bar"><div class="fill closed" style="width:100%"></div></div><div class="time-status closed">× 満席</div></div>
+    <div class="time-row"><div class="time-label">11:00</div><div class="time-bar"><div class="fill closed" style="width:100%"></div></div><div class="time-status closed">× 満席</div></div>
+    <div class="time-row"><div class="time-label">12:00</div><div class="time-bar"><div class="fill open" style="width:30%" onclick="alert('12:00で予約しますか？')"></div></div><div class="time-status open">○ 空き</div></div>
+    <div class="time-row"><div class="time-label">13:00</div><div class="time-bar"><div class="fill closed" style="width:100%"></div></div><div class="time-status closed">× 満席</div></div>
+    <div class="time-row"><div class="time-label">14:00</div><div class="time-bar"><div class="fill open" style="width:60%" onclick="alert('14:00で予約しますか？')"></div></div><div class="time-status open">○ 空き</div></div>
+    <div class="time-row"><div class="time-label">15:00</div><div class="time-bar"><div class="fill open" style="width:30%" onclick="alert('15:00で予約しますか？')"></div></div><div class="time-status open">○ 空き</div></div>
+    <div class="time-row"><div class="time-label">16:00</div><div class="time-bar"><div class="fill closed" style="width:100%"></div></div><div class="time-status closed">× 満席</div></div>
+    <div class="time-row"><div class="time-label">17:00</div><div class="time-bar"><div class="fill open" style="width:30%" onclick="alert('17:00で予約しますか？')"></div></div><div class="time-status open">○ 空き</div></div>
+  </div>
+</section>
+
+<!-- POINT SYSTEM -->
+<section class="point-sec">
+  <h2>MEMBER'S CARD</h2>
+  <p>ご来店ごとにポイント付与。<br>ランクに応じて限定サービスをご用意しています。</p>
+  <div class="point-card">
+    <div class="member">GENT MEMBER</div>
+    <div class="pts">1,350 <span style="font-size:14px;font-weight:400;color:#888">PT</span></div>
+    <div class="rank">SILVER RANK</div>
+    <div class="point-bar-bg"><div class="point-bar-fill"></div></div>
+    <div class="next">GOLD RANKまで あと 650 PT</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div class="logo">GENT</div>
+  <div class="info">
+    営業時間: 10:00 - 21:00（月曜定休）<br>
+    福岡県飯塚市 XX-XX-XX<br>
+    完全予約制
+  </div>
+  This is a NULL demo template. © NULL
+</div>
+
+</body></html>

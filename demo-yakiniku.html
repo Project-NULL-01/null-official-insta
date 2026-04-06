@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>焼肉 炎 -HOMURA- | NULLデモ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',serif;background:#050200;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{padding:14px 28px;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid rgba(255,69,0,0.25)}
+.nav span{font-size:11px;color:#ff6b35;letter-spacing:3px}.nav a{font-size:11px;color:#666;transition:color 0.3s}.nav a:hover{color:#fff}
+
+/* HERO: 横分割 */
+.hero{min-height:100vh;display:flex}
+.hero-left{flex:1;background:url('assets/tmpl_yakiniku.jpg') center/cover;position:relative}
+.hero-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,#050200 100%)}
+.hero-right{width:45%;display:flex;flex-direction:column;justify-content:center;padding:60px}
+.hero-right .kicker{font-size:10px;color:#ff6b35;letter-spacing:8px;margin-bottom:24px}
+.hero-right h1{font-size:80px;font-weight:900;color:#ff4500;margin-bottom:0;font-family:serif;line-height:1}
+.hero-right .sub{font-size:28px;font-weight:300;color:#fff;letter-spacing:16px;margin-bottom:32px}
+.hero-right p{font-size:14px;color:#888;line-height:2;margin-bottom:40px}
+.btn-reserve{background:linear-gradient(135deg,#ff4500,#cc3700);color:#fff;border:none;padding:18px 48px;font-size:14px;font-weight:700;letter-spacing:4px;cursor:pointer;border-radius:4px;transition:all 0.3s}
+.btn-reserve:hover{box-shadow:0 0 30px rgba(255,69,0,0.5);transform:translateY(-2px)}
+
+/* CONCEPT */
+.concept{padding:120px 24px;text-align:center;border-top:1px solid #1a0800}
+.concept h2{font-size:10px;letter-spacing:8px;color:#ff6b35;margin-bottom:32px}
+.concept p{font-size:18px;font-weight:300;color:#ddd;line-height:2.2;max-width:600px;margin:0 auto}
+
+/* COURSE */
+.course-sec{padding:100px 24px;max-width:900px;margin:0 auto}
+.course-sec h2{font-size:10px;letter-spacing:8px;color:#ff6b35;text-align:center;margin-bottom:56px}
+.course{background:rgba(255,255,255,0.02);border-left:4px solid #ff4500;padding:40px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s}
+.course:hover{background:rgba(255,69,0,0.06);transform:translateX(8px)}
+.course h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:8px}
+.course p{font-size:13px;color:#aaa;line-height:1.8}
+.course .right{text-align:right;flex-shrink:0;margin-left:40px}
+.course .price{font-size:32px;font-weight:900;color:#ff4500}
+.course .price small{font-size:12px;font-weight:normal;color:#666}
+.course .ppl{font-size:11px;color:#888;margin-top:4px}
+
+/* STAMP */
+.stamp-sec{padding:100px 24px;background:linear-gradient(135deg,rgba(20,5,0,0.95),rgba(10,2,0,0.98));position:relative}
+.stamp-inner{max-width:700px;margin:0 auto;text-align:center}
+.stamp-inner h2{font-size:10px;letter-spacing:8px;color:#ffaa00;margin-bottom:24px}
+.stamp-inner h3{font-size:28px;color:#fff;margin-bottom:16px;font-weight:300;letter-spacing:4px}
+.stamp-inner > p{color:#aaa;font-size:14px;margin-bottom:40px;line-height:1.8}
+.stamp-row{display:flex;gap:10px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.stamp-circle{width:60px;height:60px;border-radius:50%;border:2px dashed #333;display:flex;align-items:center;justify-content:center;font-size:20px;background:rgba(0,0,0,0.5);transition:all 0.3s}
+.stamp-circle.filled{border-style:solid;border-color:#ff4500;background:rgba(255,69,0,0.15);box-shadow:0 0 15px rgba(255,69,0,0.3);color:#ff4500;font-weight:700}
+.stamp-cta{display:inline-block;background:#ff4500;color:#fff;padding:14px 40px;font-size:13px;font-weight:700;letter-spacing:3px;border:none;border-radius:4px;cursor:pointer;transition:all 0.3s}
+.stamp-cta:hover{background:#fff;color:#ff4500}
+
+/* ACCESS */
+.access-sec{padding:100px 24px;max-width:700px;margin:0 auto;text-align:center}
+.access-sec h2{font-size:10px;letter-spacing:8px;color:#ff6b35;margin-bottom:40px}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;text-align:left}
+.access-cell{padding:20px 24px;background:#050200}
+.access-cell.label{color:#ff6b35;font-size:11px;letter-spacing:2px;font-weight:700}
+.access-cell.value{color:#ccc;font-size:14px;line-height:1.6}
+
+/* FOOT */
+.foot{text-align:center;padding:48px;font-size:10px;color:#333;border-top:1px solid #1a0800;letter-spacing:1px}
+.foot .logo{font-size:36px;font-weight:900;color:#ff4500;margin-bottom:8px;font-family:serif}
+
+@media(max-width:768px){
+  .hero{flex-direction:column}.hero-left{height:50vh}.hero-right{width:100%;padding:40px 24px}
+  .hero-left::after{background:linear-gradient(to bottom,transparent 50%,#050200 100%)}
+  .course{flex-direction:column;align-items:flex-start}.course .right{text-align:left;margin:16px 0 0}
+  .access-grid{grid-template-columns:1fr}
+  .hero-right h1{font-size:56px}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head><body>
+
+<div class="nav"><span>炎 -HOMURA-</span><a href="templates.html">← テンプレ一覧</a></div>
+
+<!-- HERO: 横分割レイアウト（画像左/テキスト右） -->
+<section class="hero">
+  <div class="hero-left"></div>
+  <div class="hero-right">
+    <div class="kicker">PREMIUM YAKINIKU</div>
+    <h1>炎</h1>
+    <div class="sub">HOMURA</div>
+    <p>厳選された国産黒毛和牛を、熟練の目利きが選び抜く。<br>炭火の揺らめきの中で味わう至福のひとときを。</p>
+    <button class="btn-reserve" onclick="alert('WEB予約デモ')">WEB予約</button>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept">
+  <h2>CONCEPT</h2>
+  <p>「炎」が名前に宿すのは、<br>お客様への感謝の「焔（ほむら）」。<br><br>一切に、妥協なく。<br>素材の良さを最大限に引き出す炭火焼きと、<br>居心地の良い空間で、<br>特別な時間をお過ごしください。</p>
+</section>
+
+<!-- COURSE MENU -->
+<section class="course-sec">
+  <h2>COURSE MENU</h2>
+  <div class="course">
+    <div><h3>炎 -HOMURA- コース</h3><p>厳選和牛5種盛り / 前菜3品 / 焼き野菜盛り合わせ<br>特製冷麺 / 本日のデザート</p></div>
+    <div class="right"><div class="price">¥5,980<small> (税込)</small></div><div class="ppl">1名様 / 120分</div></div>
+  </div>
+  <div class="course">
+    <div><h3>極 -KIWAMI- コース</h3><p>A5ランク黒毛和牛シャトーブリアン / 特選タン塩<br>特選ホルモン盛り / 〆の石焼ビビンバ / 飲み放題120分</p></div>
+    <div class="right"><div class="price">¥8,800<small> (税込)</small></div><div class="ppl">2名様〜 / 150分</div></div>
+  </div>
+  <div class="course">
+    <div><h3>宴 -UTAGE- コース</h3><p>定番カルビ＆ハラミ / キムチ盛り / おつまみ3種<br>〆のラーメン / 飲み放題90分</p></div>
+    <div class="right"><div class="price">¥4,500<small> (税込)</small></div><div class="ppl">3名様〜 / 宴会向け</div></div>
+  </div>
+  <div class="course">
+    <div><h3>ランチ限定 昼焼き膳</h3><p>日替わり和牛3種 / サラダ / ごはん・味噌汁<br>平日11:00-14:00限定</p></div>
+    <div class="right"><div class="price">¥1,580<small> (税込)</small></div><div class="ppl">1名様〜</div></div>
+  </div>
+</section>
+
+<!-- STAMP RALLY -->
+<section class="stamp-sec">
+  <div class="stamp-inner">
+    <h2>GAMIFICATION</h2>
+    <h3>🔥 デジタルスタンプラリー</h3>
+    <p>ご来店1回につき1スタンプ押印。<br>10個貯まると「極コース」が1名様無料でご招待！<br>さらに5個達成時にドリンク1杯サービスの中間報酬も。</p>
+    <div class="stamp-row">
+      <div class="stamp-circle filled">焼</div>
+      <div class="stamp-circle filled">肉</div>
+      <div class="stamp-circle filled">炎</div>
+      <div class="stamp-circle">4</div>
+      <div class="stamp-circle" style="border-color:#ffaa00;color:#ffaa00">★5</div>
+      <div class="stamp-circle">6</div>
+      <div class="stamp-circle">7</div>
+      <div class="stamp-circle">8</div>
+      <div class="stamp-circle">9</div>
+      <div class="stamp-circle" style="border-color:#ff4500;color:#ff4500;font-size:14px">🎁10</div>
+    </div>
+    <button class="stamp-cta" onclick="alert('スタンプ獲得：QRコードをスキャンしてください')">今日のスタンプをもらう</button>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access-sec">
+  <h2>ACCESS & INFO</h2>
+  <div class="access-grid">
+    <div class="access-cell label">住所</div>
+    <div class="access-cell value">福岡県飯塚市 XX-XX-XX 2F</div>
+    <div class="access-cell label">営業時間</div>
+    <div class="access-cell value">ランチ 11:00〜14:00<br>ディナー 17:00〜23:00 (L.O. 22:00)</div>
+    <div class="access-cell label">定休日</div>
+    <div class="access-cell value">毎週火曜日</div>
+    <div class="access-cell label">駐車場</div>
+    <div class="access-cell value">提携駐車場あり（2時間無料）</div>
+    <div class="access-cell label">電話</div>
+    <div class="access-cell value">0948-XX-XXXX</div>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="logo">炎</div>
+  This is a NULL demo template. © NULL
+</div>
+
+</body></html>

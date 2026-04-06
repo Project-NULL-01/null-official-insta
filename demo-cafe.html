@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Café Drip | NULLデモ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:#faf8f5;color:#3e2723}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{padding:16px 32px;background:#fff;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.04)}
+.nav span{font-size:13px;color:#5d4037;letter-spacing:1px;font-weight:700}.nav a{font-size:12px;color:#aaa}
+
+/* HERO: 左テキスト＋右画像フェード */
+.hero{min-height:85vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:60px}
+.hero-bg{position:absolute;right:0;top:0;bottom:0;width:55%;background:url('assets/tmpl_cafe.jpg') center/cover}
+.hero-fade{position:absolute;right:0;top:0;bottom:0;width:55%;background:linear-gradient(to right,#faf8f5 0%,transparent 25%)}
+.hero-content{position:relative;z-index:2;padding:0 8%;max-width:600px}
+.hero-content .kicker{font-size:11px;letter-spacing:6px;color:#8d6e63;margin-bottom:20px}
+.hero-content h1{font-size:56px;font-weight:300;color:#3e2723;letter-spacing:6px;margin-bottom:16px;font-family:serif}
+.hero-content .sub{font-size:15px;color:#6d4c41;letter-spacing:3px;margin-bottom:40px;line-height:1.8}
+.btn-order{background:#4e342e;color:#fff;border:none;padding:18px 48px;font-size:13px;font-weight:600;letter-spacing:4px;cursor:pointer;border-radius:2px;transition:all 0.3s}
+.btn-order:hover{background:#3e2723;box-shadow:0 8px 24px rgba(78,52,46,0.2);transform:translateY(-2px)}
+
+/* STORY */
+.story{padding:100px 8%;display:flex;gap:48px;max-width:1100px;margin:0 auto;align-items:center}
+.story-img{width:400px;flex-shrink:0;border-radius:8px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.06)}
+.story-img img{width:100%;display:block}
+.story-text h2{font-size:11px;letter-spacing:8px;color:#8d6e63;margin-bottom:20px}
+.story-text h3{font-size:24px;font-weight:400;color:#3e2723;margin-bottom:20px;line-height:1.6}
+.story-text p{font-size:14px;color:#795548;line-height:2}
+
+/* MENU ＋ BONUS 横並び */
+.content-row{display:flex;gap:48px;max-width:1100px;margin:0 auto;padding:100px 8%}
+.menu-col{flex:1.2}
+.bonus-col{flex:0.8}
+.sec-title{font-size:11px;letter-spacing:8px;color:#8d6e63;margin-bottom:32px;padding-bottom:16px;border-bottom:2px solid #efebe9}
+.menu-row{display:flex;justify-content:space-between;align-items:flex-end;padding:24px 0;border-bottom:1px dashed #d7ccc8}
+.menu-row .name{font-size:16px;font-weight:500;color:#3e2723;margin-bottom:4px}
+.menu-row .desc{font-size:12px;color:#8d6e63}
+.menu-row .price{font-size:18px;font-weight:700;color:#5d4037;white-space:nowrap}
+.menu-cat{font-size:12px;letter-spacing:4px;color:#a1887f;margin:32px 0 16px;font-weight:700}
+
+/* BONUS BOX */
+.bonus-box{background:#fff;border:1px solid #efebe9;padding:40px 32px;text-align:center;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.02)}
+.bonus-box h3{font-size:18px;color:#4e342e;margin-bottom:8px;letter-spacing:2px}
+.bonus-box > p{color:#8d6e63;font-size:13px;line-height:1.6;margin-bottom:24px}
+.bonus-days{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.bonus-day{aspect-ratio:1;border-radius:50%;border:1px solid #d7ccc8;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:#8d6e63;background:#fafafa;transition:all 0.3s}
+.bonus-day.done{background:#4e342e;color:#fff;border-color:#4e342e}
+.bonus-day.today{border:2px solid #5d4037;transform:scale(1.1);box-shadow:0 4px 12px rgba(93,64,55,0.15)}
+.bonus-day.reward{border-color:#d84315;background:#fbe9e7;color:#d84315;font-weight:700}
+.bonus-note{font-size:13px;color:#d84315;font-weight:700;margin-bottom:20px}
+.btn-bonus{display:block;width:100%;padding:14px;background:#4e342e;color:#fff;border:none;font-size:13px;font-weight:700;letter-spacing:2px;border-radius:4px;cursor:pointer;transition:all 0.3s}
+.btn-bonus:hover{background:#3e2723}
+
+/* TAKEOUT */
+.takeout{padding:80px 8%;background:#fff;text-align:center;border-top:1px solid #efebe9;border-bottom:1px solid #efebe9}
+.takeout h2{font-size:11px;letter-spacing:8px;color:#8d6e63;margin-bottom:16px}
+.takeout p{font-size:14px;color:#795548;margin-bottom:32px;line-height:1.8}
+.takeout-items{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.takeout-item{width:180px;padding:32px 16px;border:1px solid #efebe9;border-radius:8px;text-align:center}
+.takeout-item .emoji{font-size:32px;margin-bottom:12px}
+.takeout-item .t-name{font-size:14px;font-weight:500;color:#3e2723;margin-bottom:4px}
+.takeout-item .t-price{font-size:16px;color:#5d4037;font-weight:700}
+
+/* FOOTER */
+.foot{text-align:center;padding:48px 24px;font-size:10px;color:#a1887f;background:#fff;border-top:1px solid #efebe9}
+.foot .logo{font-size:28px;font-weight:300;color:#5d4037;margin-bottom:8px;letter-spacing:8px}
+.foot .info{font-size:12px;color:#a1887f;line-height:2;margin-bottom:16px}
+
+@media(max-width:900px){.content-row,.story{flex-direction:column}.story-img{width:100%}.hero-bg{width:100%;height:50vh;position:relative}.hero{flex-direction:column;min-height:auto}.hero-fade{width:100%;background:linear-gradient(to bottom,#faf8f5,transparent 30%)}}
+@media(max-width:640px){.hero-content h1{font-size:40px}.takeout-items{flex-direction:column;align-items:center}.bonus-days{grid-template-columns:repeat(4,1fr)}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head><body>
+
+<div class="nav"><span>Café Drip</span><a href="templates.html">← テンプレ一覧</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <div class="kicker">SPECIALTY COFFEE & BAKE</div>
+    <h1>Café Drip</h1>
+    <div class="sub">一杯のコーヒーが、日常を変える。<br>厳選シングルオリジンとこだわりのベイクを。</div>
+    <button class="btn-order" onclick="alert('テイクアウト予約のデモです')">ONLINE ORDER</button>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-img"><img src="assets/tmpl_cafe.jpg" alt="カフェ内装"></div>
+  <div class="story-text">
+    <h2>OUR STORY</h2>
+    <h3>豆の産地から、あなたの一杯まで。</h3>
+    <p>Café Dripは、エチオピア・コロンビア・グアテマラなど世界各地のシングルオリジン豆を自家焙煎でご提供。<br><br>「一杯のコーヒーで心がほどける瞬間」を大切に、浅煎りから深煎りまで、お好みに合わせた1杯をお淹れします。<br><br>併設のベーカリーでは、毎朝6時から焼き上げるクロワッサンやカンパーニュをご用意しています。</p>
+  </div>
+</section>
+
+<!-- MENU + BONUS -->
+<section class="content-row">
+  <div class="menu-col">
+    <h2 class="sec-title">MENU</h2>
+    <div class="menu-cat">— COFFEE —</div>
+    <div class="menu-row"><div><div class="name">ハンドドリップコーヒー</div><div class="desc">シングルオリジン / 浅煎り〜深煎り選択可</div></div><div class="price">¥550</div></div>
+    <div class="menu-row"><div><div class="name">カフェラテ</div><div class="desc">深煎りエスプレッソ / オーツミルク変更+¥50</div></div><div class="price">¥620</div></div>
+    <div class="menu-row"><div><div class="name">季節のスペシャルティ</div><div class="desc">月替わりの限定ドリンク / バリスタおすすめ</div></div><div class="price">¥720</div></div>
+    <div class="menu-row"><div><div class="name">水出しアイスコーヒー</div><div class="desc">12時間かけて抽出 / まろやかな甘み</div></div><div class="price">¥600</div></div>
+    <div class="menu-cat">— FOOD —</div>
+    <div class="menu-row"><div><div class="name">アボカドトースト</div><div class="desc">自家製カンパーニュ / スモークサーモン添え</div></div><div class="price">¥980</div></div>
+    <div class="menu-row"><div><div class="name">季節のフルーツタルト</div><div class="desc">旬のフルーツ / 数量限定</div></div><div class="price">¥750</div></div>
+    <div class="menu-row"><div><div class="name">焼きたてクロワッサン</div><div class="desc">毎朝6時焼き上げ / プレーン or チョコ</div></div><div class="price">¥380</div></div>
+  </div>
+  <div class="bonus-col">
+    <div class="bonus-box">
+      <h3>☕ ログインボーナス</h3>
+      <p>毎日サイトを訪問するだけで<br>スタンプが貯まります！</p>
+      <div class="bonus-days">
+        <div class="bonus-day done">Day1<br>✓</div>
+        <div class="bonus-day done">Day2<br>✓</div>
+        <div class="bonus-day done">Day3<br>✓</div>
+        <div class="bonus-day today">Day4<br>GET</div>
+        <div class="bonus-day">Day5</div>
+        <div class="bonus-day">Day6</div>
+        <div class="bonus-day reward">Day7<br>🎁</div>
+      </div>
+      <div class="bonus-note">あと4日で「お好きなドリンク1杯無料」！</div>
+      <button class="btn-bonus" onclick="alert('本日のボーナスを獲得しました ☕')">今日のボーナスをもらう</button>
+    </div>
+  </div>
+</section>
+
+<!-- TAKEOUT -->
+<section class="takeout">
+  <h2>TAKEOUT ORDER</h2>
+  <p>サイトで事前注文 → 来店時にすぐお渡し。<br>待ち時間ゼロのテイクアウト体験。</p>
+  <div class="takeout-items">
+    <div class="takeout-item"><div class="emoji">☕</div><div class="t-name">ドリップセット</div><div class="t-price">¥550〜</div></div>
+    <div class="takeout-item"><div class="emoji">🥐</div><div class="t-name">モーニングBOX</div><div class="t-price">¥980</div></div>
+    <div class="takeout-item"><div class="emoji">🎂</div><div class="t-name">ケーキセット</div><div class="t-price">¥1,200</div></div>
+  </div>
+  <button class="btn-order" onclick="alert('事前注文のデモです')" style="margin:0 auto">テイクアウト注文する</button>
+</section>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div class="logo">Café Drip</div>
+  <div class="info">
+    営業時間: 7:00 - 19:00（水曜定休）<br>
+    福岡県飯塚市 XX-XX-XX<br>
+    ☎ 0948-XX-XXXX
+  </div>
+  This is a NULL demo template. © NULL
+</div>
+
+</body></html>

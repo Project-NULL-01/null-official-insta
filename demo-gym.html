@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FIT ZONE | NULLデモ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Orbitron','Noto Sans JP',sans-serif;background:#050510;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{padding:16px 24px;background:rgba(5,5,16,0.95);display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid rgba(255,102,0,0.2)}
+.nav span{font-family:'Orbitron',sans-serif;font-size:12px;color:#ff6600;letter-spacing:2px;font-weight:900}.nav a{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:#666}
+
+/* HERO: ワイドスクリーン+スキャンライン */
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,0,0,0.8),rgba(10,5,0,0.85)),url('assets/tmpl_gym.jpg') center/cover;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,102,0,0.03) 3px,rgba(255,102,0,0.03) 4px);pointer-events:none}
+.hero::after{content:'';position:absolute;top:0;left:-200%;width:400%;height:100%;background:linear-gradient(90deg,transparent 40%,rgba(255,102,0,0.03) 50%,transparent 60%);animation:scan 4s ease-in-out infinite}
+@keyframes scan{0%{transform:translateX(-25%)}100%{transform:translateX(25%)}}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:96px;font-weight:900;color:#fff;letter-spacing:16px;text-shadow:0 0 30px rgba(255,102,0,0.6);line-height:1}
+.hero .line{width:120px;height:3px;background:linear-gradient(90deg,transparent,#ff6600,transparent);margin:32px auto}
+.hero .sub{font-family:'Orbitron',sans-serif;font-size:14px;color:#ff6600;letter-spacing:8px;margin-bottom:56px}
+.btn-join{font-family:'Orbitron',sans-serif;background:#ff6600;color:#000;border:none;padding:20px 72px;font-size:16px;font-weight:900;letter-spacing:6px;cursor:pointer;transform:skewX(-8deg);transition:all 0.3s;position:relative}
+.btn-join span{display:block;transform:skewX(8deg)}
+.btn-join:hover{background:#fff;box-shadow:0 0 40px rgba(255,102,0,0.5);transform:skewX(-8deg) translateY(-2px)}
+
+/* STATS BAR */
+.stats{display:flex;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;background:#000}
+.stat{flex:1;text-align:center;padding:40px 16px;border-right:1px solid #1a1a1a}
+.stat:last-child{border-right:none}
+.stat .num{font-family:'Orbitron',sans-serif;font-size:40px;font-weight:900;color:#ff6600;margin-bottom:4px}
+.stat .label{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:#666;letter-spacing:2px}
+
+/* FEATURES: 横スクロール風 */
+.feat-sec{padding:100px 24px;max-width:1100px;margin:0 auto}
+.feat-sec h2{font-family:'Orbitron',sans-serif;font-size:14px;color:#ff6600;letter-spacing:4px;margin-bottom:48px;border-left:4px solid #ff6600;padding-left:16px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feat-card{background:rgba(255,255,255,0.02);border:1px solid #1a1a1a;padding:40px 24px;transition:all 0.3s;position:relative;overflow:hidden}
+.feat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#ff6600;transform:scaleX(0);transition:transform 0.3s}
+.feat-card:hover{border-color:#ff6600;transform:translateY(-4px)}.feat-card:hover::after{transform:scaleX(1)}
+.feat-card .f-num{font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:rgba(255,102,0,0.1);margin-bottom:16px}
+.feat-card h3{font-family:'Noto Sans JP',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
+.feat-card p{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#888;line-height:1.8}
+
+/* MEMBERSHIP */
+.member-sec{padding:100px 24px;background:#000;border-top:1px solid #1a1a1a}
+.member-sec .inner{max-width:1000px;margin:0 auto}
+.member-sec h2{font-family:'Orbitron',sans-serif;font-size:14px;color:#ff6600;letter-spacing:4px;margin-bottom:48px;text-align:center}
+.plan-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.plan-card{border:1px solid #222;padding:48px 32px;transition:all 0.3s;position:relative}
+.plan-card:hover{border-color:#ff6600}
+.plan-card.popular{border-color:#ff6600;background:rgba(255,102,0,0.03)}
+.plan-card.popular::before{content:'MOST POPULAR';position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);font-family:'Orbitron',sans-serif;font-size:10px;background:#ff6600;color:#000;padding:4px 16px;letter-spacing:2px;font-weight:900}
+.plan-card h3{font-family:'Orbitron',sans-serif;font-size:22px;color:#fff;margin-bottom:8px;letter-spacing:4px}
+.plan-card .desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#666;margin-bottom:24px;line-height:1.8}
+.plan-card .price{font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:#ff6600;margin-bottom:24px}
+.plan-card .price small{font-size:14px;color:#888;font-weight:400}
+.plan-card ul{list-style:none;margin-bottom:32px}
+.plan-card li{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#aaa;padding:8px 0;border-bottom:1px solid #1a1a1a}
+.plan-card li::before{content:'✓ ';color:#ff6600;font-weight:700}
+.plan-btn{display:block;width:100%;padding:16px;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;letter-spacing:4px;border:2px solid #ff6600;background:transparent;color:#ff6600;cursor:pointer;transition:all 0.3s}
+.plan-btn:hover{background:#ff6600;color:#000}
+
+/* RANKING */
+.rank-sec{padding:100px 24px;max-width:800px;margin:0 auto}
+.rank-sec h2{font-family:'Orbitron',sans-serif;font-size:14px;color:#ff6600;letter-spacing:4px;text-align:center;margin-bottom:16px}
+.rank-sec .sub{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#888;text-align:center;margin-bottom:48px;line-height:1.8}
+.rank-card{background:linear-gradient(135deg,#1a1008,#0a0500);border:1px solid rgba(255,102,0,0.3);border-radius:12px;padding:48px 32px;box-shadow:0 0 50px rgba(255,102,0,0.05)}
+.rank-header{text-align:center;margin-bottom:32px}
+.rank-header .trophy{font-size:56px;margin-bottom:12px}
+.rank-header h3{font-family:'Orbitron',sans-serif;font-size:20px;color:#fff;letter-spacing:2px;margin-bottom:4px}
+.rank-header p{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:#888}
+.rank-list{margin-bottom:32px}
+.rank-item{display:flex;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.rank-item:last-child{border:none}
+.rank-pos{width:36px;font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;margin-right:16px}
+.rank-pos.gold{color:#ffd700}.rank-pos.silver{color:#c0c0c0}.rank-pos.bronze{color:#cd7f32}.rank-pos.normal{color:#444}
+.rank-name{flex:1;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:#ddd}
+.rank-pts{font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:#ff6600}
+.rank-pts small{font-size:10px;color:#888}
+.rank-cta{display:block;width:100%;text-align:center;padding:16px;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;letter-spacing:4px;border:1px solid #ff6600;color:#ff6600;background:transparent;cursor:pointer;transition:all 0.3s;margin-top:24px}
+.rank-cta:hover{background:#ff6600;color:#000}
+
+/* SCHEDULE */
+.schedule-sec{padding:100px 24px;background:#000;border-top:1px solid #1a1a1a}
+.schedule-sec .inner{max-width:900px;margin:0 auto}
+.schedule-sec h2{font-family:'Orbitron',sans-serif;font-size:14px;color:#ff6600;letter-spacing:4px;text-align:center;margin-bottom:48px}
+.schedule-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.sch-day{text-align:center;padding:16px 4px}
+.sch-day .d-name{font-family:'Orbitron',sans-serif;font-size:11px;color:#888;margin-bottom:8px}
+.sch-day .d-hours{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:#aaa;line-height:1.6}
+.sch-day.closed .d-name{color:#333}.sch-day.closed .d-hours{color:#333}
+
+/* FOOTER */
+.foot{text-align:center;padding:60px 24px;font-size:10px;color:#333;border-top:1px solid #1a1a1a;letter-spacing:2px}
+.foot .logo{font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:8px}
+.foot .info{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:#444;line-height:2;margin-bottom:16px}
+
+@media(max-width:768px){
+  .feat-grid{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr}
+  .stats{flex-wrap:wrap}.stat{flex:none;width:50%}
+  .hero h1{font-size:56px;letter-spacing:8px}
+  .schedule-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+</head><body>
+
+<div class="nav"><span>FIT ZONE</span><a href="templates.html" style="font-family:'Noto Sans JP'">← テンプレ一覧</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>FIT ZONE</h1>
+  <div class="line"></div>
+  <div class="sub">24/7 NEXT GEN FITNESS</div>
+  <button class="btn-join" onclick="alert('入会・見学予約のデモです')"><span>JOIN NOW</span></button>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat"><div class="num">24</div><div class="label">HOURS OPEN</div></div>
+  <div class="stat"><div class="num">120+</div><div class="label">MACHINES</div></div>
+  <div class="stat"><div class="num">850</div><div class="label">MEMBERS</div></div>
+  <div class="stat"><div class="num">15</div><div class="label">TRAINERS</div></div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat-sec">
+  <h2>WHY FIT ZONE</h2>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="f-num">01</div>
+      <h3>24時間365日営業</h3>
+      <p>早朝でも深夜でも、あなたの都合に合わせていつでもトレーニング可能。セキュリティカード入退館。</p>
+    </div>
+    <div class="feat-card">
+      <div class="f-num">02</div>
+      <h3>最新マシン120台超</h3>
+      <p>有酸素エリア・フリーウェイトエリア・ファンクショナルエリアに最新鋭のマシンを完備。</p>
+    </div>
+    <div class="feat-card">
+      <div class="f-num">03</div>
+      <h3>ゲーミフィケーション</h3>
+      <p>来店回数・消費カロリーでポイント獲得。ランキング・チャレンジで仲間と競い合いモチベーション維持。</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="member-sec">
+  <div class="inner">
+    <h2>MEMBERSHIP PLANS</h2>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <h3>REGULAR</h3>
+        <div class="desc">24時間いつでも全エリアのマシンをご利用いただけるスタンダードプランです。</div>
+        <div class="price">¥7,480<small> / month</small></div>
+        <ul>
+          <li>全マシン利用可</li>
+          <li>シャワー・ロッカー完備</li>
+          <li>フリーWi-Fi</li>
+          <li>月1回 体組成測定</li>
+        </ul>
+        <button class="plan-btn" onclick="alert('入会手続きデモ')">SELECT PLAN</button>
+      </div>
+      <div class="plan-card popular">
+        <h3>PREMIUM</h3>
+        <div class="desc">レギュラープランの全機能に加え、パーソナルトレーニングとプロテインバーが使い放題。</div>
+        <div class="price">¥14,800<small> / month</small></div>
+        <ul>
+          <li>REGULAR の全特典</li>
+          <li>パーソナルトレーニング 月2回</li>
+          <li>プロテインバー無料</li>
+          <li>優先予約・混雑回避</li>
+          <li>専用アプリでメニュー管理</li>
+        </ul>
+        <button class="plan-btn" onclick="alert('入会手続きデモ')" style="background:#ff6600;color:#000">SELECT PLAN</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section class="rank-sec">
+  <h2>GAMIFICATION SYSTEM</h2>
+  <div class="sub">来店回数や消費カロリーに応じてポイント付与。<br>ランキング上位者には翌月プロテイン30杯分進呈！</div>
+  <div class="rank-card">
+    <div class="rank-header">
+      <div class="trophy">🏆</div>
+      <h3>MONTHLY RANKING</h3>
+      <p>2025年4月 — リアルタイム更新</p>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item"><div class="rank-pos gold">1</div><div class="rank-name">Tanaka M.</div><div class="rank-pts">12,450 <small>PT</small></div></div>
+      <div class="rank-item"><div class="rank-pos silver">2</div><div class="rank-name">Sato K.</div><div class="rank-pts">11,200 <small>PT</small></div></div>
+      <div class="rank-item"><div class="rank-pos bronze">3</div><div class="rank-name">Yamada T.</div><div class="rank-pts">10,850 <small>PT</small></div></div>
+      <div class="rank-item"><div class="rank-pos normal">4</div><div class="rank-name">Ito S.</div><div class="rank-pts">9,500 <small>PT</small></div></div>
+      <div class="rank-item"><div class="rank-pos normal">5</div><div class="rank-name">Suzuki H.</div><div class="rank-pts">8,720 <small>PT</small></div></div>
+    </div>
+    <button class="rank-cta" onclick="alert('マイページで現在のランクを確認するデモ')">MY PAGE →</button>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-sec">
+  <div class="inner">
+    <h2>OPENING HOURS</h2>
+    <div class="schedule-grid">
+      <div class="sch-day"><div class="d-name">MON</div><div class="d-hours">24H</div></div>
+      <div class="sch-day"><div class="d-name">TUE</div><div class="d-hours">24H</div></div>
+      <div class="sch-day"><div class="d-name">WED</div><div class="d-hours">24H</div></div>
+      <div class="sch-day"><div class="d-name">THU</div><div class="d-hours">24H</div></div>
+      <div class="sch-day"><div class="d-name">FRI</div><div class="d-hours">24H</div></div>
+      <div class="sch-day"><div class="d-name">SAT</div><div class="d-hours">24H</div></div>
+      <div class="sch-day"><div class="d-name">SUN</div><div class="d-hours">24H</div></div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-family:'Noto Sans JP';font-size:12px;color:#555">※ スタッフ常駐: 10:00〜22:00 / 深夜帯はセキュリティカードで入館</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div class="logo">FIT ZONE</div>
+  <div class="info">
+    福岡県飯塚市 XX-XX-XX 1F<br>
+    Tel: 0948-XX-XXXX<br>
+    スタッフ受付: 10:00 - 22:00
+  </div>
+  This is a NULL demo template. © NULL
+</div>
+
+</body></html>

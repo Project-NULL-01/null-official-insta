@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>整体院 和 -NAGOMI- | NULLデモ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:#f9fcf9;color:#2c3e2c}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{padding:16px 24px;background:#fff;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;box-shadow:0 1px 15px rgba(44,62,44,0.04)}
+.nav span{font-size:13px;color:#2e7d32;letter-spacing:1px;font-weight:700}.nav a{font-size:12px;color:#889988}
+
+/* HERO: カード型中央配置 */
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8f5e9 0%,#f1f8e9 50%,#f9fcf9 100%);padding:120px 24px 80px}
+.hero-card{background:#fff;border-radius:24px;box-shadow:0 20px 60px rgba(44,62,44,0.08);padding:64px 48px;text-align:center;max-width:600px;width:100%}
+.hero-card .icon{font-size:48px;margin-bottom:16px}
+.hero-card h1{font-size:48px;font-weight:500;color:#2c3e2c;margin-bottom:8px;letter-spacing:12px}
+.hero-card .sub{font-size:16px;color:#5a735a;letter-spacing:4px;margin-bottom:32px}
+.hero-card p{font-size:14px;color:#888;line-height:1.8;margin-bottom:40px}
+.btn-line{background:#2e7d32;color:#fff;border:none;padding:18px 48px;font-size:14px;font-weight:700;letter-spacing:2px;cursor:pointer;border-radius:50px;transition:all 0.3s}
+.btn-line:hover{background:#1b5e20;transform:translateY(-2px);box-shadow:0 8px 20px rgba(46,125,50,0.25)}
+
+/* 3つの強み */
+.strengths{padding:80px 24px;background:#fff}
+.strengths .inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.strength{text-align:center;padding:40px 24px}
+.strength .num{font-size:48px;font-weight:200;color:#c8e6c9;margin-bottom:8px;font-family:serif}
+.strength h3{font-size:16px;font-weight:700;color:#2c3e2c;margin-bottom:12px}
+.strength p{font-size:13px;color:#5a735a;line-height:1.8}
+
+/* 症状別メニュー（整体特有のUI） */
+.symptom-sec{padding:100px 24px;max-width:900px;margin:0 auto}
+.symptom-sec h2{font-size:11px;letter-spacing:8px;color:#2e7d32;text-align:center;margin-bottom:48px}
+.symptom-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.symptom-tab{padding:10px 24px;border:1px solid #c8e6c9;border-radius:20px;font-size:13px;color:#5a735a;cursor:pointer;transition:all 0.3s;background:#fff}
+.symptom-tab:hover,.symptom-tab.active{background:#2e7d32;color:#fff;border-color:#2e7d32}
+.treatment-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.treatment-card{background:#fff;border:1px solid #e8f5e9;border-radius:16px;padding:32px;box-shadow:0 4px 15px rgba(0,0,0,0.02);transition:all 0.3s}
+.treatment-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(46,125,50,0.08)}
+.treatment-card .t-icon{width:48px;height:48px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.treatment-card h3{font-size:18px;color:#2c3e2c;margin-bottom:8px}
+.treatment-card p{font-size:13px;color:#5a735a;line-height:1.7;margin-bottom:16px}
+.treatment-card .meta{display:flex;justify-content:space-between;align-items:center}
+.treatment-card .time{font-size:12px;color:#888}
+.treatment-card .price{font-size:20px;font-weight:700;color:#2e7d32}
+
+/* FLOW（施術の流れ） */
+.flow-sec{padding:100px 24px;background:#f0f7f0}
+.flow-sec .inner{max-width:700px;margin:0 auto}
+.flow-sec h2{font-size:11px;letter-spacing:8px;color:#2e7d32;text-align:center;margin-bottom:48px}
+.flow-step{display:flex;gap:24px;margin-bottom:32px;align-items:flex-start}
+.flow-num{width:40px;height:40px;background:#2e7d32;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.flow-content h3{font-size:16px;color:#2c3e2c;margin-bottom:6px}
+.flow-content p{font-size:13px;color:#5a735a;line-height:1.7}
+.flow-line{width:2px;height:24px;background:#c8e6c9;margin:0 0 0 19px}
+
+/* REMIND BOX */
+.remind-sec{padding:100px 24px;max-width:700px;margin:0 auto}
+.remind-sec h2{font-size:11px;letter-spacing:8px;color:#2e7d32;text-align:center;margin-bottom:32px}
+.remind-box{background:#fff;border-left:4px solid #2e7d32;padding:40px;border-radius:0 12px 12px 0;box-shadow:0 10px 30px rgba(0,0,0,0.03)}
+.remind-box h3{font-size:20px;color:#2c3e2c;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.remind-box p{font-size:14px;color:#5a735a;line-height:1.8;margin-bottom:24px}
+.remind-mock{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:24px}
+.remind-msg{background:#2e7d32;color:#fff;padding:16px;border-radius:12px 12px 12px 0;font-size:13px;line-height:1.6;max-width:80%;margin-bottom:16px}
+.remind-msg.user{background:#e8f5e9;color:#2c3e2c;border-radius:12px 12px 0 12px;margin-left:auto}
+.btn-outline{display:inline-block;padding:12px 32px;border:1px solid #2e7d32;color:#2e7d32;font-size:13px;font-weight:700;border-radius:24px;transition:all 0.3s}
+.btn-outline:hover{background:#2e7d32;color:#fff}
+
+/* VOICE */
+.voice-sec{padding:100px 24px;background:#fff}
+.voice-sec .inner{max-width:800px;margin:0 auto}
+.voice-sec h2{font-size:11px;letter-spacing:8px;color:#2e7d32;text-align:center;margin-bottom:48px}
+.voice{padding:32px;border:1px solid #e8f5e9;border-radius:12px;margin-bottom:20px}
+.voice .stars{color:#ffb300;font-size:14px;margin-bottom:8px}
+.voice p{font-size:14px;color:#5a735a;line-height:1.8;font-style:italic}
+.voice .author{font-size:12px;color:#a5c8a5;margin-top:12px}
+
+/* FOOTER */
+.foot{text-align:center;padding:48px 24px;font-size:10px;color:#889988;border-top:1px solid #e8f5e9;background:#f9fcf9}
+.foot .logo{font-size:32px;font-weight:500;color:#2c3e2c;margin-bottom:4px;letter-spacing:8px}
+.foot .info{font-size:12px;color:#a5c8a5;line-height:2;margin-bottom:16px}
+
+@media(max-width:768px){
+  .strengths .inner{grid-template-columns:1fr}
+  .treatment-cards{grid-template-columns:1fr}
+  .hero-card{padding:48px 24px}
+  .hero-card h1{font-size:36px}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+</head><body>
+
+<div class="nav"><span>整体院 和 -NAGOMI-</span><a href="templates.html">← テンプレ一覧</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card">
+    <div class="icon">🌿</div>
+    <h1>和</h1>
+    <div class="sub">NAGOMI 整体院</div>
+    <p>体の歪みを整え、心まで和らぐ。<br>丁寧なカウンセリングと確かな技術で<br>あなた本来の"楽な体"を取り戻します。</p>
+    <button class="btn-line" onclick="alert('LINE予約デモ')">LINEでカンタン予約</button>
+  </div>
+</section>
+
+<!-- 3つの強み -->
+<section class="strengths">
+  <div class="inner">
+    <div class="strength">
+      <div class="num">01</div>
+      <h3>根本改善の施術</h3>
+      <p>痛みの「原因」にアプローチ。表面的なほぐしではなく、骨盤・背骨の歪みから改善します。</p>
+    </div>
+    <div class="strength">
+      <div class="num">02</div>
+      <h3>完全個室・予約制</h3>
+      <p>他のお客様を気にせず、リラックスして施術を受けられます。お子様連れもOK。</p>
+    </div>
+    <div class="strength">
+      <div class="num">03</div>
+      <h3>LINE自動リマインド</h3>
+      <p>次回推奨日に自動でLINE通知。「いつ行けばいいか分からない」を解消し、通院を習慣化。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 症状別メニュー -->
+<section class="symptom-sec">
+  <h2>TREATMENT MENU</h2>
+  <div class="symptom-tabs">
+    <div class="symptom-tab active">肩こり・首</div>
+    <div class="symptom-tab">腰痛・骨盤</div>
+    <div class="symptom-tab">頭痛・眼精疲労</div>
+    <div class="symptom-tab">産後ケア</div>
+  </div>
+  <div class="treatment-cards">
+    <div class="treatment-card">
+      <div class="t-icon">🌿</div>
+      <h3>全身調整コース</h3>
+      <p>骨盤から背骨の歪みを整え、慢性的な肩こり・腰痛の根本改善を目指します。初めての方におすすめ。</p>
+      <div class="meta"><span class="time">約60分</span><span class="price">¥6,600</span></div>
+    </div>
+    <div class="treatment-card">
+      <div class="t-icon">💆</div>
+      <h3>ドライヘッドマッサージ</h3>
+      <p>眼精疲労・頭痛・睡眠不足に。自律神経を整え深いリラックス効果をもたらします。</p>
+      <div class="meta"><span class="time">約40分</span><span class="price">¥4,400</span></div>
+    </div>
+    <div class="treatment-card">
+      <div class="t-icon">🤰</div>
+      <h3>産後骨盤矯正</h3>
+      <p>出産で開いた骨盤をやさしく元の位置へ。お子様連れOK。腰痛・尿漏れの改善にも。</p>
+      <div class="meta"><span class="time">約50分</span><span class="price">¥5,500</span></div>
+    </div>
+    <div class="treatment-card">
+      <div class="t-icon">⚡</div>
+      <h3>急性症状ケア</h3>
+      <p>ぎっくり腰・寝違え・スポーツ障害など。痛みの早期緩和を目的とした集中施術。</p>
+      <div class="meta"><span class="time">約30分</span><span class="price">¥4,400</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 施術の流れ -->
+<section class="flow-sec">
+  <div class="inner">
+    <h2>TREATMENT FLOW</h2>
+    <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><h3>カウンセリング</h3><p>お体の状態・生活習慣・お悩みを丁寧にヒアリング。施術方針をご説明します。</p></div></div>
+    <div class="flow-line"></div>
+    <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><h3>検査・姿勢チェック</h3><p>立位・座位での姿勢分析、可動域チェック、触診で原因箇所を特定します。</p></div></div>
+    <div class="flow-line"></div>
+    <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><h3>施術</h3><p>お体に合わせた手技で、骨格・筋肉のバランスを調整。無理な力は加えません。</p></div></div>
+    <div class="flow-line"></div>
+    <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><h3>アフターケア</h3><p>自宅でできるストレッチ指導、次回通院の目安をご案内。LINEでフォロー配信も。</p></div></div>
+  </div>
+</section>
+
+<!-- REMIND -->
+<section class="remind-sec">
+  <h2>AUTO REMIND SYSTEM</h2>
+  <div class="remind-box">
+    <h3>📱 LINEで自動フォロー</h3>
+    <p>お客様の通院間隔に合わせて、最適なタイミングで自動メッセージを配信。「そろそろ行かなきゃ」のストレスなく、最適なペースで通院を続けられます。</p>
+    <div class="remind-mock">
+      <div class="remind-msg">こんにちは、和 -NAGOMI- です🌿<br>前回の施術から2週間が経ちました。<br>お体の調子はいかがですか？<br>次回のご予約はこちらから 👇</div>
+      <div class="remind-msg user">ありがとうございます！<br>来週の水曜日でお願いします 🙏</div>
+    </div>
+    <a href="#" class="btn-outline" onclick="alert('管理画面デモ：リマインド設定')">管理画面を見る →</a>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice-sec">
+  <div class="inner">
+    <h2>PATIENT'S VOICE</h2>
+    <div class="voice">
+      <div class="stars">★★★★★</div>
+      <p>「デスクワークの肩こりがひどくて来院しましたが、3回の通院でウソのように楽になりました。LINEでリマインドが来るので通い忘れもなく助かっています。」</p>
+      <div class="author">— 30代 女性・会社員</div>
+    </div>
+    <div class="voice">
+      <div class="stars">★★★★★</div>
+      <p>「産後の骨盤矯正で通っています。子連れOKなのが本当に嬉しい。施術後は体がスッと軽くなります。」</p>
+      <div class="author">— 20代 女性・主婦</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div class="logo">和</div>
+  <div class="info">
+    営業時間: 9:00 - 20:00（日曜・祝日休）<br>
+    福岡県飯塚市 XX-XX-XX<br>
+    完全予約制 / LINE予約推奨
+  </div>
+  This is a NULL demo template. © NULL
+</div>
+
+</body></html>
