@@ -208,7 +208,7 @@ footer { border-top:1px solid var(--dark-border); background:var(--dark-bg); pad
 
 /* RESPONSIVE */
 @media(max-width:1024px) {
-  #hero{grid-template-columns:1fr} .hero-image-wrap{height:auto;padding:0 0 40px;overflow:hidden} .hero-image-wrap img{height:50vh;width:100%;max-width:none;max-height:none;object-fit:cover;object-position:center 20%;border-radius:0} .hero-image-glow{width:100%;height:80px} .hero-content{padding:120px 40px 40px}
+  #hero{grid-template-columns:1fr} .hero-image-wrap{height:auto;padding:0 0 40px;overflow:hidden;display:flex;justify-content:center} .hero-image-wrap img{height:auto;max-height:400px;width:75%;max-width:350px;object-fit:cover;object-position:center 25%;border:1px solid rgba(0,212,255,0.15);filter:drop-shadow(0 0 30px rgba(0,212,255,0.2))} .hero-image-glow{display:none} .hero-content{padding:120px 40px 40px}
   .features-grid,.features-images{grid-template-columns:1fr}
   .pricing-grid{grid-template-columns:repeat(2,1fr)}
   .problem-grid,.premium-highlight,.demo-grid{grid-template-columns:1fr}
