@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NULL（ヌル） | 次世代システム開発サービス | 初期費用0円</title>
-  <meta name="description" content="NULLは、お客様のビジネスに最適化されたシステムを初期費用0円で提供する次世代型開発サービスです。パーソナライズUI/UX、ミニゲーム機能でリピート率を最大化。">
+  <title>NULL（ヌル） | 次世代システム開発サービス | 制作費ゼロ</title>
+  <meta name="description" content="NULLは、お客様のビジネスに最適化されたシステムを制作費0円で提供する次世代型開発サービスです。パーソナライズUI/UX、ミニゲーム機能でリピート率を最大化。">
   <meta name="keywords" content="システム開発,ホームページ制作,初期費用0円,ミニゲーム,ガチャ,リピート率,福岡,NULL">
   <meta property="og:title" content="NULL（ヌル） | 次世代システム開発サービス">
   <meta property="og:description" content="既成概念をゼロ（NULL）にする。完璧な奉仕、ここから。初期費用0円の次世代システム開発。">
@@ -19,6 +19,21 @@
 </head>
 <body>
 
+<!-- BACKGROUND PARTICLES -->
+<canvas id="bg-particles"></canvas>
+
+<!-- ============================================================
+     OPENING ANIMATION — TERMINAL BOOT
+     ============================================================ -->
+<div id="opening-overlay">
+  <div class="boot-scanline"></div>
+  <div class="boot-line"></div>
+  <div class="boot-glitch"></div>
+  <div class="boot-logo">NULL<span class="boot-underscore">_</span></div>
+  <div class="boot-sub">SYSTEM INITIALIZING</div>
+  <div class="boot-progress"><div class="boot-progress-bar"></div></div>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">NULL</a>
@@ -27,6 +42,7 @@
     <li><a href="#features">Features</a></li>
     <li><a href="#demo">Demo</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="https://lin.ee/udlaPc4" class="nav-cta" id="nav-line-btn">LINE相談</a>
 </nav>
@@ -52,9 +68,9 @@
       ミニゲーム機能で、顧客のリピート率・エンゲージメントを最大化します。
     </p>
     <div class="hero-zero-badge">
-      <div class="hero-zero-number">¥0</div>
+      <div class="hero-zero-number neon-text">¥0</div>
       <div class="hero-zero-text">
-        <strong>初期費用 0円</strong>
+        <strong class="neon-text">制作費ゼロ！</strong>
         月額制で、リスクなく始められます。
       </div>
     </div>
@@ -69,6 +85,48 @@
   <div class="hero-image-wrap">
     <img src="assets/profile_closeup.jpg" alt="NULL — サイバーメイド・システム開発アシスタント" loading="eager">
     <div class="hero-image-glow"></div>
+  </div>
+</section>
+
+<div class="neon-line-h"></div>
+
+<!-- ============================================================
+     SYSTEM TRAILER — CM VIDEO
+     ============================================================ -->
+<section id="trailer">
+  <div class="section-inner">
+    <div class="section-label fade-up">VOID_PROTOCOL</div>
+    <h2 class="section-title fade-up">[ VOID_PROTOCOL ] — <span style="color:var(--neon-blue)">SYSTEM TRAILER</span></h2>
+    <p class="section-desc fade-up stagger-1">NULLが提供する世界観とサービスの全容を、60秒で体感せよ。</p>
+    <div class="video-wrapper fade-up stagger-2">
+      <iframe src="https://www.youtube.com/embed/oCXRNPTJW_A" title="NULL SYSTEM TRAILER" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="neon-line-h"></div>
+
+<!-- ============================================================
+     STATS COUNTER
+     ============================================================ -->
+<section id="stats">
+  <div class="section-inner">
+    <div class="section-label fade-up">TRACK RECORD</div>
+    <h2 class="section-title fade-up">実績データ</h2>
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-label">導入事例数+</div>
+      </div>
+      <div class="stat-item fade-up stagger-1">
+        <div class="stat-number" data-target="98">0</div>
+        <div class="stat-label">顧客満足度 %</div>
+      </div>
+      <div class="stat-item fade-up stagger-2">
+        <div class="stat-number" data-target="0">0</div>
+        <div class="stat-label">制作費 円</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -106,7 +164,7 @@
     </div>
     <div class="solution-banner fade-up">
       <h3>NULLは、これらの課題を全て解決します。</h3>
-      <p>あなたのビジネス専用にデザインされたUI/UX、顧客をファン化するミニゲーム機能、<br>そして初期費用0円——。NULLは「本当に使えるシステム」だけをお届けします。</p>
+      <p>あなたのビジネス専用にデザインされたUI/UX、顧客をファン化するミニゲーム機能、<br>そして制作費ゼロ——。NULLは「本当に使えるシステム」だけをお届けします。</p>
     </div>
   </div>
 </section>
@@ -119,13 +177,13 @@
 <section id="features">
   <div class="section-inner">
     <div class="section-label">FEATURES</div>
-    <h2 class="section-title fade-up">NULLの3つの強み</h2>
+    <h2 class="section-title fade-up">NULLの<span style="color:var(--neon-blue)">3つの強み</span></h2>
     <p class="section-desc fade-up stagger-1">テンプレートでは絶対に実現できない、3つの圧倒的機能。</p>
   </div>
   <div class="features-images">
     <div class="feature-img-cell"><img src="assets/extra_02.jpg" alt="パーソナライズUI/UX"><div class="feature-img-overlay"></div></div>
     <div class="feature-img-cell"><img src="assets/extra_05.jpg" alt="ミニゲーム機能"><div class="feature-img-overlay"></div></div>
-    <div class="feature-img-cell"><img src="assets/extra_07.jpg" alt="初期費用0円"><div class="feature-img-overlay"></div></div>
+    <div class="feature-img-cell"><img src="assets/extra_07.jpg" alt="制作費ゼロ"><div class="feature-img-overlay"></div></div>
   </div>
   <div class="features-grid">
     <div class="feature-card fade-up">
@@ -145,9 +203,9 @@
     <div class="feature-card fade-up stagger-3">
       <div class="feature-number">03</div>
       <div class="feature-icon-wrap">✦</div>
-      <h3 class="feature-title"><span>ZERO-RISK START</span>初期費用 0円で導入</h3>
-      <p class="feature-text">ハイクオリティなシステムを、初期費用なしで今日から導入可能。月額固定制で予算管理もシンプル。解約違約金もありません。</p>
-      <div class="feature-detail">初期費用 ¥0 / 月額固定 / 解約違約金なし / 即日導入</div>
+      <h3 class="feature-title"><span>ZERO-RISK START</span>制作費ゼロで今すぐ導入</h3>
+      <p class="feature-text">ハイクオリティなシステムを、制作費なしで今日から導入可能。月額固定制で予算管理もシンプル。解約違約金もありません。</p>
+      <div class="feature-detail">制作費 ¥0 / 月額固定 / 解約違約金なし / 即日導入</div>
     </div>
   </div>
 </section>
@@ -307,7 +365,9 @@
       <div class="section-label fade-up">PRICING</div>
       <h2 class="section-title fade-up">プラン一覧</h2>
       <p class="section-desc fade-up stagger-1" style="margin:0 auto;text-align:center">
-        全プラン<strong style="color:var(--neon-blue)">初期費用0円</strong>。ビジネスの成長に合わせて選べる4つのプラン。
+        一般的なWeb制作会社の相場：<strong style="color:var(--neon-pink)">初期制作費 30万〜50万円</strong>。<br>
+        Project_NULLなら、<strong class="neon-text">制作費は完全ゼロ！</strong><br>
+        契約日から発生するのは、<strong style="color:var(--neon-blue)">月額のシステム利用料のみ</strong>です。
       </p>
     </div>
     <div class="pricing-grid">
@@ -315,8 +375,9 @@
       <div class="pricing-card fade-up">
         <div class="pricing-plan-id">PLAN : 01</div>
         <div class="pricing-plan-name">LIGHT</div>
-        <div class="pricing-price-init">初期費用 ¥0</div>
+        <div class="pricing-price-init">制作費 ¥0</div>
         <div class="pricing-price"><span class="price-currency">¥</span><span class="price-value">9,800</span><span class="price-unit">/月</span></div>
+        <div class="pricing-daily">→1日あたり <strong>¥326</strong></div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>オリジナルデザイン制作</li>
@@ -332,8 +393,9 @@
       <div class="pricing-card fade-up stagger-2">
         <div class="pricing-plan-id">PLAN : 02</div>
         <div class="pricing-plan-name">STANDARD</div>
-        <div class="pricing-price-init">初期費用 ¥0</div>
+        <div class="pricing-price-init">制作費 ¥0</div>
         <div class="pricing-price"><span class="price-currency">¥</span><span class="price-value">14,800</span><span class="price-unit">/月</span></div>
+        <div class="pricing-daily">→1日あたり <strong>¥493</strong></div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>LIGHTの全機能</li>
@@ -350,8 +412,9 @@
         <div class="pricing-recommend">👑 一番人気</div>
         <div class="pricing-plan-id">PLAN : 03</div>
         <div class="pricing-plan-name">PREMIUM</div>
-        <div class="pricing-price-init">初期費用 ¥0</div>
-        <div class="pricing-price"><span class="price-currency">¥</span><span class="price-value">19,800</span><span class="price-unit">/月</span></div>
+        <div class="pricing-price-init">制作費 ¥0</div>
+        <div class="pricing-price"><span class="price-currency">¥</span><span class="price-value" style="color:var(--neon-blue)">19,800</span><span class="price-unit">/月</span></div>
+        <div class="pricing-daily">→1日あたり <strong>¥660</strong>（ランチ代以下）</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>STANDARDの全機能</li>
@@ -384,16 +447,17 @@
     <div class="premium-highlight fade-up">
       <div>
         <h3>なぜ<em>PREMIUM</em>が最もコスパに優れているのか</h3>
-        <p>ガチャの「ドキドキ感」、ログインボーナスの「得した感」、ランキングの「楽しさ」——感情を動かす仕組みが顧客を「ファン」に変えます。<br><br>顧客LTVが月3,000円向上するだけで、7人のリピーターが増えれば<strong style="color:var(--neon-blue)">月21,000円の売上増</strong>。プラン投資は初月で回収できます。</p>
+        <p>一般的なWeb制作会社では、初期制作費だけで<strong style="color:var(--neon-pink)">30万〜50万円</strong>が相場。Project_NULLなら<strong style="color:var(--neon-blue)">制作費は完全ゼロ</strong>。契約日から発生するのは、月額のシステム利用料（¥19,800）のみ。<br>→ <strong style="color:var(--neon-green)">1日あたりたったの¥660</strong>で、フルオーダーのシステムが手に入る。<br><br>ガチャの「ドキドキ感」、ログインボーナスの「得した感」、ランキングの「楽しさ」——感情を動かす仕組みが顧客を「ファン」に変えます。顧客LTVが月3,000円向上するだけで、7人のリピーターが増えれば<strong style="color:var(--neon-blue)">月21,000円の売上増</strong>。プラン投資は初月で回収できます。</p>
       </div>
       <ul class="premium-features-list">
         <li><span class="pf-icon">🎰</span>ミニゲーム / スタンプラリー / ランキングから1つ選択</li>
         <li><span class="pf-icon">🎁</span>ログインボーナスで毎日アクセスを習慣化</li>
         <li><span class="pf-icon">📈</span>LTV最大化 → 紹介・口コミが自然発生</li>
+        <li><span class="pf-icon">💰</span>他社なら制作費だけで30万〜50万円 → NULLはゼロ！</li>
       </ul>
       <p style="margin-top:16px;font-size:12px;color:var(--text-muted);text-align:center;grid-column:1/-1">💡 複数の機能を<strong style="color:var(--neon-blue)">組み合わせたい</strong>なら → <a href="#pricing" style="color:orange;font-weight:700;text-decoration:underline">CUSTOM DX</a>プランがおすすめ</p>
     </div>
-    <p class="pricing-note">全プラン30日間オンボーディングサポート付き。いつでもプラン変更・解約可能。違約金なし。</p>
+    <p class="pricing-note">全プラン30日間オンボーディングサポート付き。いつでもプラン変更・解約可能。違約金なし。<br>※ 月額料金はシステム利用料として契約日より毎月発生します。</p>
   </div>
 </section>
 
@@ -411,13 +475,129 @@
     </div>
     <div class="section-label fade-up" style="justify-content:center;margin-bottom:24px">CONTACT</div>
     <h2 class="cta-title fade-up">まずは<em>LINE</em>で、<br>お気軽にご相談ください。</h2>
-    <p class="cta-desc fade-up stagger-1">無料相談は30分。あなたのビジネスの課題を分析し、<br>最適なプランをご提案します。初期費用0円、リスクなし。</p>
+    <p class="cta-desc fade-up stagger-1">あなたのビジネスの課題を分析し、<br>最適なプランをご提案します。制作費ゼロ、リスクなし。</p>
     <div class="line-add-wrap fade-up stagger-2" style="margin-bottom:16px">
       <a href="https://lin.ee/udlaPc4"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
     </div>
     <p class="cta-note">返信まで最大24時間。お気軽にお問い合わせください。</p>
   </div>
 </section>
+
+<div class="neon-line-h"></div>
+
+<!-- ============================================================
+     MEDIA / SNS
+     ============================================================ -->
+<section id="media">
+  <div class="section-inner">
+    <div class="section-label fade-up">MEDIA</div>
+    <h2 class="section-title fade-up">NULLは、<span style="color:var(--neon-blue)">音楽</span>と<span style="color:var(--neon-pink)">SNS</span>でも発信中。</h2>
+    <p class="section-desc fade-up stagger-1">サービスだけじゃない。NULLの世界観を、音楽・映像・SNSで体感してください。</p>
+    <div class="media-grid">
+      <div class="media-card fade-up">
+        <div class="media-card-img"><img src="assets/media_music.jpg" alt="NULL Music"></div>
+        <div class="media-card-body">
+          <div class="media-card-icon">🎵</div>
+          <h3>MUSIC</h3>
+          <p>NULLのオリジナル楽曲を各音楽配信サービスで配信中。サイバーパンクな世界観を耳から体験。</p>
+          <a href="https://www.tunecore.co.jp/artists?id=1070484" target="_blank" class="media-link">
+            <span>各配信サービスで聴く</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="media-card fade-up stagger-2">
+        <div class="media-card-img"><img src="assets/media_tiktok.jpg" alt="NULL TikTok"></div>
+        <div class="media-card-body">
+          <div class="media-card-icon">📱</div>
+          <h3>TikTok</h3>
+          <p>NULLの日常やサービスの裏側をショート動画で発信。フォローして最新情報をチェック。</p>
+          <a href="https://www.tiktok.com/@project.null.01?_r=1&_t=ZS-95VUwy4lddx" target="_blank" class="media-link">
+            <span>TikTokをフォロー</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-line-h"></div>
+
+<!-- ============================================================
+     FAQ — よくある質問
+     ============================================================ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label fade-up">FAQ</div>
+    <h2 class="section-title fade-up">よくある質問</h2>
+    <p class="section-desc fade-up stagger-1">お客様からよくいただくご質問をまとめました。</p>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-label">Q1</span>
+          <span>本当に制作費ゼロで始められますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>はい。一般的なWeb制作会社では初期制作費として30万〜50万円が相場ですが、Project_NULLでは制作費は完全ゼロです。契約日から発生するのは、月額のシステム利用料のみとなります。</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up stagger-1">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-label">Q2</span>
+          <span>解約に違約金はかかりますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>いいえ、違約金は一切かかりません。いつでもプラン変更・解約が可能です。ただし、解約後はシステムの利用が停止となりますのでご了承ください。</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up stagger-2">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-label">Q3</span>
+          <span>ミニゲーム機能とは何ですか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>ガチャ・ルーレット・スタンプラリー・ランキングなど、お客様のサイトに「遊び」と「お得感」を加える機能です。来店やサイト訪問のたびに楽しめるため、リピート率・エンゲージメントの大幅向上が期待できます。</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up stagger-3">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-label">Q4</span>
+          <span>制作期間はどのくらいですか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>プランにもよりますが、LIGHTプランで約2週間、PREMIUM・CUSTOM DXプランで約3〜4週間が目安です。ヒアリング後に詳細なスケジュールをご提示いたします。</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up stagger-4">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-label">Q5</span>
+          <span>どの業種に対応していますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>美容室・ネイルサロン・飲食店・整体院・ジム・クリニックなど、あらゆる店舗型ビジネスに対応しています。業種ごとに最適化されたUI/UXをご提案します。</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up stagger-4">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-label">Q6</span>
+          <span>サポート体制はどうなっていますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>LIGHTプランはメール、STANDARDはチャット、PREMIUM以上は24時間優先対応のサポートをご提供しています。導入後30日間はオンボーディングサポートも付帯します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-line-h"></div>
 
 <!-- ============================================================
      FOOTER
@@ -437,6 +617,7 @@
         <li><a href="#features">機能紹介</a></li>
         <li><a href="#comparison">他社比較</a></li>
         <li><a href="#pricing">プラン</a></li>
+        <li><a href="#faq">よくある質問</a></li>
         <li><a href="https://lin.ee/udlaPc4">LINE無料相談</a></li>
       </ul>
     </div>
@@ -447,11 +628,15 @@
     </div>
   </div>
   <div class="footer-copy">© 2025 NULL. ALL RIGHTS RESERVED.</div>
-  <!-- Stealth Legal Link -->
-  <div class="footer-legal-stealth">
-    <a href="legal.html">Legal Info</a>
+  <div class="footer-legal-sub">
+    <a href="./legal.html">特定商取引法に基づく表記</a>
   </div>
 </footer>
+
+<!-- STICKY MOBILE LINE BUTTON -->
+<a href="https://lin.ee/udlaPc4" class="sticky-line-btn" id="sticky-line" aria-label="LINEで無料相談">
+  <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+</a>
 
 <!-- ============================================================
      SCRIPTS
@@ -462,6 +647,108 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+/* ---- FAQ Accordion ---- */
+function toggleFaq(el) {
+  var item = el.parentElement;
+  var wasActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item.active').forEach(function(i) { i.classList.remove('active'); });
+  if (!wasActive) item.classList.add('active');
+}
+
+/* ---- Remove opening overlay after animation ---- */
+setTimeout(function() {
+  var overlay = document.getElementById('opening-overlay');
+  if (overlay) overlay.remove();
+}, 3600);
+
+/* ---- Background Floating Particles ---- */
+(function() {
+  var c = document.getElementById('bg-particles');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var particles = [];
+  var N = 60;
+
+  function resize() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (var i = 0; i < N; i++) {
+    particles.push({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 1.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.3 + 0.05
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    for (var i = 0; i < N; i++) {
+      var p = particles[i];
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0) p.x = c.width;
+      if (p.x > c.width) p.x = 0;
+      if (p.y < 0) p.y = c.height;
+      if (p.y > c.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 240, 255, ' + p.a + ')';
+      ctx.fill();
+
+      // Connect nearby particles
+      for (var j = i + 1; j < N; j++) {
+        var q = particles[j];
+        var dist = Math.hypot(p.x - q.x, p.y - q.y);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(0, 240, 255, ' + (0.06 * (1 - dist / 120)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---- Stats Counter Animation ---- */
+(function() {
+  var counters = document.querySelectorAll('.stat-number[data-target]');
+  var animated = new Set();
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !animated.has(e.target)) {
+        animated.add(e.target);
+        var target = parseInt(e.target.getAttribute('data-target'));
+        var start = 0;
+        var duration = 1500;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var val = Math.floor(progress * target);
+          e.target.textContent = val.toLocaleString();
+          if (progress < 1) requestAnimationFrame(step);
+          else e.target.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(step);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function(el) { obs.observe(el); });
+})();
 
 /* ---- Roulette Mini-Game — Canvas Animation (no CSS transform) ---- */
 (function() {
