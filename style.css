@@ -30,6 +30,7 @@
   align-items: center;
   justify-content: center;
   animation: overlayFadeOut 0.5s ease 2.6s forwards;
+  overflow: hidden;
 }
 #opening-overlay .boot-scanline {
   position: absolute;
@@ -211,13 +212,18 @@ section, footer {
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
 
 body {
   background: var(--dark-bg);
   color: var(--text-primary);
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
   overflow-x: hidden;
+  width: 100%;
   line-height: 1.7;
 }
 
@@ -1852,17 +1858,88 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .section-inner { padding: 80px 24px; }
+  .section-inner { padding: 60px 16px; }
   .pricing-grid, .features-images, .templates-grid { grid-template-columns: 1fr; }
   .cta-btns { flex-direction: column; align-items: center; }
   .compare-table { display: block; overflow-x: auto; }
   .roulette-wheel-wrap { width: 280px; height: 280px; }
   .roulette-wheel { width: 280px; height: 280px; }
   .roulette-btn { padding: 14px 40px; font-size: 14px; letter-spacing: 4px; }
-  .faq-question { padding: 20px 20px; font-size: 13px; }
-  .faq-answer { padding: 0 20px; }
-  .faq-item.active .faq-answer { padding: 0 20px 20px; }
   #opening-overlay .boot-logo { letter-spacing: 8px; }
   .stats-grid { grid-template-columns: 1fr; }
   .media-grid { grid-template-columns: 1fr; }
+  .hero-content { padding: 72px 20px 32px; }
+  .hero-badge { font-size: 9px; letter-spacing: 2px; padding: 6px 14px; }
+  .hero-title { font-size: clamp(36px, 10vw, 48px); }
+  .hero-sub { font-size: 11px; }
+  .hero-catchcopy { font-size: 14px; }
+  .hero-desc { font-size: 12px; }
+  .hero-zero-badge { flex-direction: column; text-align: center; gap: 8px; padding: 16px; }
+  .hero-zero-number { font-size: 36px; }
+  .hero-btns { flex-direction: column; gap: 12px; width: 100%; }
+  .hero-btns a { width: 100%; text-align: center; }
+  .section-title { font-size: clamp(20px, 5vw, 28px); }
+  .section-desc { font-size: 13px; }
+  .section-label { font-size: 9px; letter-spacing: 3px; }
+  nav { padding: 12px 16px; }
+  .nav-logo { font-size: 18px; letter-spacing: 5px; }
+  .nav-cta { padding: 8px 16px; font-size: 10px; letter-spacing: 2px; }
+
+  /* --- FAQ Mobile Optimization --- */
+  .faq-list { gap: 1px; }
+  .faq-question {
+    padding: 18px 16px;
+    font-size: 13px;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .faq-question .faq-q-label {
+    font-size: 10px;
+    width: 24px;
+    letter-spacing: 2px;
+  }
+  .faq-question .faq-toggle {
+    font-size: 16px;
+  }
+  .faq-answer {
+    padding: 0 16px;
+  }
+  .faq-item.active .faq-answer {
+    padding: 0 16px 18px;
+    max-height: 400px;
+  }
+  .faq-answer p {
+    font-size: 12.5px;
+    line-height: 1.9;
+    padding-left: 14px;
+  }
+
+  /* --- Pricing Mobile --- */
+  .pricing-card { padding: 28px 20px; }
+  .pricing-plan-name { font-size: 14px; }
+  .price-value { font-size: clamp(28px, 7vw, 36px); }
+  .pricing-features li { font-size: 12px; }
+  .premium-highlight { padding: 28px 20px; font-size: 13px; }
+  .premium-features-list li { font-size: 12px; }
+
+  /* --- Feature Cards Mobile --- */
+  .feature-card { padding: 28px 20px; }
+  .feature-title { font-size: 14px; }
+  .feature-text { font-size: 12.5px; }
+
+  /* --- CTA Mobile --- */
+  .cta-title { font-size: clamp(20px, 5vw, 26px); }
+  .cta-desc { font-size: 13px; }
+
+  /* --- Media Cards Mobile --- */
+  .media-card-body { padding: 20px; }
+  .media-card-body h3 { font-size: 13px; }
+  .media-card-body p { font-size: 12px; }
+
+  /* --- Footer Mobile --- */
+  footer { padding: 32px 16px; }
+  .footer-inner { gap: 28px; }
+
+  /* --- Neon line overflow fix --- */
+  .neon-line-h { overflow: hidden; }
 }
