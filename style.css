@@ -139,7 +139,7 @@
   pointer-events: none;
 }
 
-section, footer, nav {
+section, footer {
   position: relative;
   z-index: 2;
 }
@@ -1820,7 +1820,7 @@ footer {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  #hero { grid-template-columns: 1fr; }
+  #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 60px; }
   .hero-image-wrap {
     height: auto;
     padding: 0 0 40px;
@@ -1839,7 +1839,7 @@ footer {
     filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.2));
   }
   .hero-image-glow { display: none; }
-  .hero-content { padding: 120px 40px 40px; }
+  .hero-content { padding: 80px 28px 40px; }
   .features-grid, .features-images { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: repeat(2, 1fr); }
   .problem-grid, .premium-highlight, .demo-grid { grid-template-columns: 1fr; }
